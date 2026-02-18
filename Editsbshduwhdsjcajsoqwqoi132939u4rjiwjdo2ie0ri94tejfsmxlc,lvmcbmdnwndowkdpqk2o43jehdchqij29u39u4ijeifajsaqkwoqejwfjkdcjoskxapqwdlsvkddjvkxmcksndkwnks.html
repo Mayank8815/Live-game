@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Leela Bazar</title>
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Meta -->
+  <meta name="description" content="Leela Bazar – Result & Chart Management" />
+  <!-- Icons -->
+  <link rel="icon" href="Logo.jpg" />
+  <meta name="theme-color" content="#FED7AA" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body class="bg-gray-100">
+  <h1 id="loggedUserFName" class="hidden"></h1>
+
+  <script>setTimeout(() => {
+      const name = document.getElementById('loggedUserFName').innerText;
+      const mail = document.getElementById('loggedUserEmail').innerText;
+      if (name == "" || mail == "") {
+        window.location.href = "india.html";
+      }
+    }, 4000);
+
+  </script>
+  <!-- HEADER -->
+  <header class="fixed w-full top-0 left-0 bg-orange-200 p-4 shadow rounded-b-3xl">
+    <div class="flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <img alt="logo" src="Logo.jpg" class="w-10 h-10 rounded-full" />
+        <h1 class="font-bold text-xl">Leela Bazar</h1>
+      </div>
+      <button title="add data" onclick="openForm()" class="text-xl"><i class="fa fa-plus"></i></button>
+    </div>
+
+    <!-- Filters -->
+    <div class="grid relative grid-cols-3 gap-2 mt-3 ">
+      <select id="filterName" title="Game Name"
+        class="p-2 rounded bg-white  focus:outline-none focus:ring-0 ring-0 focus:ring-offset-0"
+        onchange="applyFilters()">
+        <option value="">All Types</option>
+        <option value="LEELA BAZAR">LEELA BAZAR</option>
+        <option value="Golden">Golden</option>
+        <option value="Final">Final</option>
+        <option value="MORNING SYNDICATE">SYNDICATE</option>
+        <option value="KALYAN">KALYAN</option>
+        <option value="SYNDICATE NIGHT">SYNDICATE NIGHT</option>
+        <option value="RAJDHANI NIGHT">RAJDHANI NIGHT</option>
+        <option value="SHAKTIMAAN">SHAKTIMAAN</option>
+      </select>
+
+      <select id="filterDay" title="Days"
+        class="p-2 rounded bg-white  focus:outline-none focus:ring-0 ring-0 focus:ring-offset-0"
+        onchange="applyFilters()">
+        <option value="">All Days</option>
+        <option>MONDAY</option>
+        <option>TUESDAY</option>
+        <option>WEDNESDAY</option>
+        <option>THURSDAY</option>
+        <option>FRIDAY</option>
+        <option>SATURDAY</option>
+        <option>SUNDAY</option>
+      </select>
+
+      <input title="Date" type="date" id="filterDate"
+        class="py-2 rounded bg-white w-[100%] focus:outline-none focus:ring-0 ring-0 focus:ring-offset-0  "
+        oninput="applyFilters()" />
+    </div>
+  </header>
+
+  <!-- DATA GRID -->
+  <main class="p-2 mt-[33%] md:mt-[10%]">
+    <div id="grid" class="grid grid-cols-2 md:grid-cols-5 gap-2">
+      <div class="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
+        <div class="w-10 h-10 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    </div>
+  </main>
+
+  <div id="loader" class="hidden fixed inset-0 flex items-center justify-center bg-black/40 z-50">
+    <div class="w-10 h-10 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+  </div>
+  <!-- MODAL -->
+  <div id="modal" class="hidden fixed inset-0 bg-black/50 flex items-end">
+    <div class="bg-white w-full rounded-t-3xl p-4">
+      <div class="flex justify-between mb-2">
+        <h2 class="font-bold text-lg">Update Record</h2>
+        <button onclick="closeForm()">✕</button>
+      </div>
+
+      <form id="form" class="justify-center w-full">
+        <input type="hidden" name="Id" id="Id" />
+        <input type="hidden" name="Category" value="single" />
+        <div class="flex justify-between gap-2">
+          <select type="color" title="Mcolor" name="Mcolor" data-empty required
+            class="w-full mt-2 h-14 border px-3 border-black text-black font-bold rounded cursor-pointer"
+            onchange="this.style.backgroundColor=this.value; this.style.color='#000000'">
+            <option value="#fff1e1" style="background:#fff1e1;color:black;">Peach</option>
+            <option value="#f7eebb" style="background:#f7eebb;color:black;">Gold</option>
+            <option value="#d2f8e0" style="background:#d2f8e0;color:black;">Green</option>
+            <option value="#d6e0f5" style="background:#d6e0f5;color:black;">Blue</option>
+            <option value="#f5d1d1" style="background:#f5d1d1;color:black;">Red</option>
+            <option value="#ebdbc1" style="background:#ebdbc1;color:black;">Amber</option>
+          </select>
+          <select title="Game Name" name="Name" required
+            class="w-full mt-2 h-14 border px-3 border-black text-black font-bold rounded cursor-pointer">
+            <option value="LEELA BAZAR">LEELA BAZAR</option>
+            <option value="MORNING SYNDICATE">SYNDICATE</option>
+            <option value="KALYAN">KALYAN</option>
+            <option value="SYNDICATE NIGHT">SYNDICATE NIGHT</option>
+            <option value="RAJDHANI NIGHT">RAJDHANI NIGHT</option>
+            <option value="SHAKTIMAAN">SHAKTIMAAN</option>
+            <option value="Golden">Golden</option>
+            <option value="Final">Final</option>
+          </select>
+        </div>
+        <div class="flex justify-between gap-2">
+          <input title="Date" type="date" name="Date" required
+            class="w-full mt-2 h-14  focus:outline-none focus:ring-0 ring-0 focus:ring-offset-0 border px-3 border-black text-black font-bold rounded cursor-pointer" />
+
+          <select title="Days" name="Day" required
+            class="w-full mt-2 h-14 border px-3  border-black text-black font-bold rounded cursor-pointer">
+            <option value="MONDAY">Monday</option>
+            <option value="TUESDAY">Tuesday</option>
+            <option value="WEDNESDAY">Wednesday</option>
+            <option value="THURSDAY">Thursday</option>
+            <option value="FRIDAY">Friday</option>
+            <option value="SATURDAY">Saturday</option>
+            <option value="SUNDAY">Sunday</option>
+          </select>
+
+        </div>
+        <div class="flex justify-between gap-2">
+          <input title="Start TIme" type="time" name="Time" required
+            class="w-full mt-2 h-14 border  focus:outline-none focus:ring-0 ring-0 focus:ring-offset-0 px-3 border-black text-black font-bold rounded cursor-pointer gap-2" />
+          <input title="ENd TIme" type="time" name="End" required
+            class="w-full mt-2 h-14 border  focus:outline-none focus:ring-0 ring-0 focus:ring-offset-0 px-3 border-black text-black font-bold rounded cursor-pointer gap-2" />
+        </div>
+        <select name="Bcolor" title="Bcolor" data-empty
+          class="w-full h-14 mt-2 border border-black rounded font-bold px-3" onchange="this.style.backgroundColor=this.value;
+            this.style.color=['#FDBA74','#FFD700','#F59E0B'].includes(this.value)?'#000':'#fff';">
+          <option value="#000000" style="background:#000000;color:white;">Black</option>
+          <option value="#DC2626" style="background:#DC2626;color:white;">Red</option>
+        </select>
+
+        <div class="flex justify-between gap-2">
+          <input type="number" name="Jodi" placeholder="Jodi"
+            class="w-full mt-2 h-14 border  focus:outline-none focus:ring-0 ring-0 focus:ring-offset-0 px-3 border-black text-black font-bold rounded cursor-pointer gap-2" />
+          <input type="number" name="Marks" placeholder="Marks"
+            class="w-full mt-2 h-14 border px-3  focus:outline-none focus:ring-0 ring-0 focus:ring-offset-0 border-black text-black font-bold rounded cursor-pointer gap-2" />
+          <input type="number" name="Pennel" placeholder="Panel"
+            class="w-full mt-2 h-14 border px-3  focus:outline-none focus:ring-0 ring-0 focus:ring-offset-0 border-black text-black font-bold rounded cursor-pointer gap-2" />
+        </div>
+
+        <button type="submit" id="Save"
+          class="w-full mt-2 h-14 border px-3 border-black text-black font-bold rounded cursor-pointer bg-blue-600 text-white ">SAVE</button>
+      </form>
+    </div>
+  </div>
+  <div id="success" class="fixed inset-0 hidden z-50 bg-black/40 flex items-center justify-center">
+    <div class="bg-white px-8 py-6 rounded-xl font-bold text-green-600 shadow-lg">
+      ✅ Submitted Successfully
+    </div>
+  </div>
+
+
+  <script>
+    const API = "https://script.google.com/macros/s/AKfycbwyn0hnIPesioTndkrXdHdH8XIouffYuWbPq_Sa1V7PzgpICK2ZXE5Xjm4ShXOMQf8J/exec";
+    let records = [];
+
+    // Fetch
+    async function loadData() {
+      const res = await fetch(API + "?action=read");
+      const data = await res.json();
+      records = data.records.reverse();
+      render(records);
+    }
+
+    // Render
+    function render(list) {
+      const grid = document.getElementById("grid");
+      grid.innerHTML = "";
+
+      list.forEach(r => {
+        const card = document.createElement("div");
+        card.className = "bg-white p-2 rounded shadow text-sm";
+        card.innerHTML = `
+                <div onclick='edit(${JSON.stringify(r)})'>
+      <div class="flex justify-between">
+        <b>${r.Date}</b><span>${r.Day}</span>
+      </div>
+      <div class="font-bold justify-center mx-auto">${r.Name}</div>
+      <div class="text-pink-600 font-bold flex justify-between">
+        <span>${r.Jodi || ""}</span>
+        <span>${r.Marks || ""}</span>
+        <span>${r.Pennel || ""}</span>
+      </div>  </div>
+    `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Filters
+    function applyFilters() {
+      const n = filterName.value;
+      const d = filterDay.value;
+      const dt = filterDate.value;
+
+      render(records.filter(r =>
+        (!n || r.Name === n) &&
+        (!d || r.Day === d) &&
+        (!dt || r.Date === dt)
+      ));
+    }
+
+    // Modal
+    function openForm() {
+      modal.classList.remove("hidden");
+      document.getElementById("Save").textContent = "Create";
+    }
+    function closeForm() { modal.classList.add("hidden"); form.reset(); }
+    function edit(r) {
+      openForm();
+      document.getElementById("Save").textContent = "Update";
+      Object.keys(r).forEach(k => form[k] && (form[k].value = r[k]));
+    }
+
+    function showSuccess() {
+      const s = document.getElementById("success");
+      s.classList.remove("hidden");
+      setTimeout(() => {
+        s.classList.add("hidden");
+        closeForm();
+      }, 1500);
+    }
+
+    // Submit & Updatev Entry 
+    const loader = document.getElementById("loader");
+
+    function showLoader() {
+      loader.classList.remove("hidden");
+    }
+
+    function hideLoader() {
+      loader.classList.add("hidden");
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      showLoader();
+      const fd = new FormData(form);
+      // 🔴 IMPORTANT: check BEFORE generating ID
+      let id = fd.get("Id");
+
+      let action = "create";
+
+      if (id && id.trim() !== "") {
+        action = "update";
+      } else {
+        // ✅ generate 6-digit ID
+        id = Math.floor(100000 + Math.random() * 900000);
+        fd.set("Id", id);
+      }
+
+      const params = new URLSearchParams(fd);
+      await fetch(API + `?action=${action}`, {
+        method: "POST",
+        body: params
+      });
+      loadData();
+      hideLoader();
+      showSuccess();
+      closeForm();
+    });
+
+    loadData();
+  </script>
+
+</body>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+  import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+  import {
+    getFirestore,
+    getDoc,
+    doc
+  } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+
+  // ✅ Your Firebase config (USE YOUR OWN VALUES HERE)
+  const firebaseConfig = {
+    apiKey: "AIzaSyAKN5GR18VTFrKNgVG7FenD4aSTX3Q2PbA",
+    authDomain: "gift-zone-project.firebaseapp.com",
+    projectId: "gift-zone-project",
+    storageBucket: "gift-zone-project.appspot.com",
+    messagingSenderId: "806465456032",
+    appId: "1:806465456032:web:becf8988a6dfabe43646c5",
+    measurementId: "G-1ZLMWBP61Y",
+  };
+
+  // ✅ Initialize Firebase services
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  // ✅ On Auth Change: fetch and show user data
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const loggedInUserId = localStorage.getItem("loggedInUserId");
+      if (!loggedInUserId) {
+        console.log("User ID not found in local storage.");
+        return;
+      }
+
+      const docRef = doc(db, "users", loggedInUserId);
+      getDoc(docRef)
+        .then((docSnap) => {
+          if (docSnap.exists()) {
+            const userData = docSnap.data();
+            let filt = document.getElementById("loggedUserFName").innerText = userData.firstName || "N/A";
+            document.getElementById("loggedUserEmail").innerText = userData.email || "N/A";
+            const lNameElement = document.getElementById("loggedUserLName");
+            if (userData.lastName) {
+              lNameElement.innerText = userData.lastName;
+            } else {
+              lNameElement.innerText = "-";
+            }
+          } else {
+            console.log("No user document found in Firestore.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching user data:", error);
+        });
+    } else {
+      console.log("User not signed in.");
+      window.location.href = "index.html"; // Redirect to login
+    }
+  });
+
+  // ✅ Logout
+  const logoutButton = document.getElementById("logout");
+  logoutButton.addEventListener("click", () => {
+    localStorage.removeItem("loggedInUserId");
+    signOut(auth)
+      .then(() => {
+        window.location.href = "index.html";
+      })
+      .catch((error) => {
+        console.error("Error signing out:", error);
+      });
+  });
+
+</script>
+
+</html>

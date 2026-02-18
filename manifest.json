@@ -1,0 +1,34 @@
+{
+  "name": "Leela Bazar",
+  "short_name": "Leela Bazar",
+  "id": "/",
+  "scope": "/",
+  "start_url": "/?source=pwa",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFFFF",
+  "theme_color": "#ffffff",
+  "description": "Leela Bazar – Best platform for Satta Matka charts,Satta Matka results, lucky numbers, game tracker, guessing, fast updates, and live statistics. Check Satta Matka numbers instantly in Hindi & English.",
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "Logo.jpg",
+      "sizes": "912x912",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "Logo.jpg",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "Logo.jpg",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

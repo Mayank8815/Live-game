@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Leela Bazar – Satta Matka, Matka Results, Lucky Numbers & Game Tracker</title>
+  <!-- Primary SEO -->
+  <meta name="description" content="Leela Bazar – Play Smart & Track Your Game Stats Easily." />
+  <meta name="keywords" content="Leela Bazar, games, tracking, stats, online game" />
+  <meta name="author" content="Leela Bazar Team" />
+  <!-- OpenGraph (Social Media Preview) -->
+  <meta property="og:title" content="Leela Bazar" />
+  <meta property="og:description" content="Play Smart. Track Smarter. Leela Bazar PWA." />
+  <meta property="og:image" content="Logo.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/" />
+  <link rel="icon" type="image/png" sizes="192x192" href="Logo.jpg" />
+  <link rel="apple-touch-icon" href="Logo.jpg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Leela Bazar">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Primary SEO -->
+  <meta name="description"
+    content="Leela Bazar – Best platform for Satta Matka charts, Matka results, lucky numbers, game tracker, guessing, fast updates, and live statistics. Check Matka numbers instantly in Hindi & English." />
+  <meta name="keywords"
+    content="Leela Bazar, Satta Matka, Matka, Satta, Matka Result, Satta Number, Matka Guessing, Matka Chart, Online Matka, Satta Bazar, Kalyan Matka, Mumbai Matka, Satta Live, DpBoss Alternative" />
+  <!-- Hindi Keywords (boost Indian audience search ranking) -->
+  <meta name="keywords"
+    content="सट्टा मटका, मटका नंबर, मटका रिजल्ट, सट्टा बाजार, कल्याण मटका, मुंबई मटका, फ्री मटका गेम, सट्टा चार्ट, लीला बाजार" />
+  <meta name="author" content="Leela Bazar Team" />
+  <!-- Canonical -->
+  <link rel="canonical" href="https://yourwebsite.com/" />
+  <!-- Robots -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <!-- OpenGraph Social Preview -->
+  <meta property="og:title" content="Leela Bazar – Fast Matka Results & Game Tracker" />
+  <meta property="og:description"
+    content="Satta Matka results, lucky numbers, charts & guessing – all in one place. Fast updates. Hindi + English support." />
+  <meta property="og:image" content="Logo.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://leelabazar.in" />
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Leela Bazar – Satta Matka Results & Lucky Numbers">
+  <meta name="twitter:description"
+    content="Check Satta Matka results, lucky numbers, guessing & charts instantly. Hindi & English.">
+  <meta name="twitter:image" content="Logo.jpg">
+  <!-- App Icons -->
+  <link rel="icon" type="image/png" sizes="512x512" href="Logo.jpg" />
+
+  <meta name="theme-color" content="#FED7AA" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Leela Bazar">
+  <!-- Fonts & CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+</head>
+
+<style>
+  /* Hide scrollbar for all browsers */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+</style>
+
+<body class="bg-gray-100 ">
+  <div class="bg-orange-200  z-40 left-0 w-full   shadow-md rounded-b-3xl">
+    <div class="p-3">
+
+      <div class="flex justify-between items-center">
+
+        <!-- LEFT PROFILE BUTTON -->
+        <div onclick="window.location.href='index.html'" id="openSidebar"
+          class="flex items-center gap-3 cursor-pointer">
+          <img title="leelabazar" src="Logo.jpg" class="w-11 h-11 rounded-full shadow-md" />
+          <p class="font-extrabold text-black text-2xl">Leela Bazar</p>
+        </div>
+
+        <!-- RIGHT ICONS -->
+        <div class="flex items-center gap-5 text-gray-900 text-2xl mr-2">
+          <!-- HIDDEN GOOGLE TRANSLATE ELEMENT -->
+          <div id="google_translate_element" class="hidden" style="display:none;"></div>
+          <!-- TRANSLATE TOGGLE BUTTON -->
+          <button id="translateBtn" class="translate-btn">हिंदी</button>
+          <script>
+            let isHindi = false;
+
+            function googleTranslateElementInit() {
+              new google.translate.TranslateElement(
+                {
+                  pageLanguage: 'en',
+                  includedLanguages: 'hi,en',
+                  autoDisplay: false
+                },
+                'google_translate_element'
+              );
+            }
+
+            document.getElementById("translateBtn").addEventListener("click", () => {
+              const select = document.querySelector(".goog-te-combo");
+              if (!select) return;
+
+              if (!isHindi) {
+                select.value = "hi";
+                document.getElementById("translateBtn").innerText = "English";
+              } else {
+                select.value = "en";
+                document.getElementById("translateBtn").innerText = "हिंदी";
+              }
+
+              select.dispatchEvent(new Event("change"));
+              isHindi = !isHindi;
+            });
+          </script>
+          <!-- GOOGLE TRANSLATE SCRIPT -->
+          <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+          <i class="fa-solid fa-mobile text-gray-800 transition"></i>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-7 mt-2 text-center text-[14px] px-3 font-bold text-black bg-yellow-300 border-b border-black">
+    <div class="border-r mx-auto border-black py-[2px]">DATE</div>
+    <div class="border-r border-black py-[2px]">MON</div>
+    <div class="border-r border-black py-[2px]">TUE</div>
+    <div class="border-r border-black py-[2px]">WED</div>
+    <div class="border-r border-black py-[2px]">THU</div>
+    <div class="border-r border-black py-[2px]">FRI</div>
+    <div class="py-[2px]">SAT</div>
+  </div>
+
+  <div id="recordsBody">
+
+    <!-- PRELOADER -->
+    <div id="preloader" class="p-1 hidden animate-pulse">
+
+      <!-- WEEK HEADER -->
+      <div class="bg-orange-100 rounded-xl shadow-md p-1 mb-3">
+        <div class="flex justify-between mb-2">
+          <div class="h-5 w-24 bg-orange-300 rounded"></div>
+          <div class="h-5 w-24 bg-orange-300 rounded"></div>
+        </div>
+
+        <!-- WEEK DAYS -->
+        <div class="grid grid-cols-7 gap-1 mb-2">
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+        </div>
+
+        <!-- DATE BOXES -->
+        <div class="grid grid-cols-7 gap-1">
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+        </div>
+      </div>
+      <div class="bg-orange-100 rounded-xl shadow-md p-1 mb-3">
+        <div class="flex justify-between mb-2">
+          <div class="h-5 w-24 bg-orange-300 rounded"></div>
+          <div class="h-5 w-24 bg-orange-300 rounded"></div>
+        </div>
+
+        <!-- WEEK DAYS -->
+        <div class="grid grid-cols-7 gap-1 mb-2">
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+        </div>
+
+        <!-- DATE BOXES -->
+        <div class="grid grid-cols-7 gap-1">
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+        </div>
+      </div>
+      <div class="bg-orange-100 rounded-xl shadow-md p-1 mb-3">
+        <div class="flex justify-between mb-2">
+          <div class="h-5 w-24 bg-orange-300 rounded"></div>
+          <div class="h-5 w-24 bg-orange-300 rounded"></div>
+        </div>
+
+        <!-- WEEK DAYS -->
+        <div class="grid grid-cols-7 gap-1 mb-2">
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+        </div>
+
+        <!-- DATE BOXES -->
+        <div class="grid grid-cols-7 gap-1">
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+        </div>
+      </div>
+      <div class="bg-orange-100 rounded-xl shadow-md p-1 mb-3">
+        <div class="flex justify-between mb-2">
+          <div class="h-5 w-24 bg-orange-300 rounded"></div>
+          <div class="h-5 w-24 bg-orange-300 rounded"></div>
+        </div>
+
+        <!-- WEEK DAYS -->
+        <div class="grid grid-cols-7 gap-1 mb-2">
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+        </div>
+
+        <!-- DATE BOXES -->
+        <div class="grid grid-cols-7 gap-1">
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+        </div>
+      </div>
+      <div class="bg-orange-100 rounded-xl shadow-md p-1 mb-3">
+        <div class="flex justify-between mb-2">
+          <div class="h-5 w-24 bg-orange-300 rounded"></div>
+          <div class="h-5 w-24 bg-orange-300 rounded"></div>
+        </div>
+
+        <!-- WEEK DAYS -->
+        <div class="grid grid-cols-7 gap-1 mb-2">
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+        </div>
+
+        <!-- DATE BOXES -->
+        <div class="grid grid-cols-7 gap-1">
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+        </div>
+      </div>
+      <div class="bg-orange-100 rounded-xl shadow-md p-1 mb-3">
+        <div class="flex justify-between mb-2">
+          <div class="h-5 w-24 bg-orange-300 rounded"></div>
+          <div class="h-5 w-24 bg-orange-300 rounded"></div>
+        </div>
+
+        <!-- WEEK DAYS -->
+        <div class="grid grid-cols-7 gap-1 mb-2">
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+          <div class="h-4 bg-gray-300 rounded"></div>
+        </div>
+
+        <!-- DATE BOXES -->
+        <div class="grid grid-cols-7 gap-1">
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <div class="h-16 bg-gray-200 rounded-lg"></div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+  <div class="w-full ">
+    <img class="w-full" width="w-full" src="Assets\Kalyan\kalyana.jpg" alt="">
+  </div>
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyW6iFWJpgLR-oogi_GysEp_RXph9d9vaQ2idlMgsQQVAg3ee_XeKuqyI_HDyaqnwlG/exec";
+    const params = new URLSearchParams(window.location.search);
+    const ids = params.get("id");
+
+    // Fetch and render records
+    async function fetchRecords() {
+      const res = await fetch(`${scriptURL}?action=read`);
+      const data = await res.json();
+      const body = document.getElementById("recordsBody");
+      body.innerHTML = "";
+
+      const renderedWeeks = new Set(); // ✅ PREVENT DUPLICATES
+
+      data.records
+        .filter(r => r.Category && r.Category.toLowerCase() === "single")
+        .forEach((r) => {
+
+          // ✅ CALCULATE MONDAY
+          const date = new Date(r.Date);
+          const day = date.getDay(); // Sun=0
+          const monday = new Date(date);
+          monday.setDate(date.getDate() - day + (day === 0 ? -6 : 1));
+
+          const mondayKey = monday.toISOString().split("T")[0];
+
+          // ❌ SKIP IF THIS WEEK ALREADY RENDERED
+          if (renderedWeeks.has(mondayKey)) return;
+
+          renderedWeeks.add(mondayKey); // ✅ MARK WEEK AS DONE
+
+          // ✅ FILTER SAME WEEK RECORDS
+          const weekRecords = data.records.filter(x => {
+            if (x.Category.toLowerCase() !== "single") return false;
+
+            const d = new Date(x.Date);
+            const m = new Date(monday);
+            const s = new Date(monday);
+            s.setDate(monday.getDate() + 6);
+            return d >= m && d <= s;
+          });
+
+          const row = document.createElement("div");
+          row.innerHTML = `
+          <div class="mx-auto overflow-x-auto bg-black scrollbar-hide text-[0.175rem] px-2">
+    <div class="grid grid-cols-7 text-center text-sm bg-white">
+        <h2 class=" text-[10px] text-center font-bold m-0 p-0 text-gray-800">
+         ${mondayKey}
+           TO 
+           ${getWeekEndDate(monday)}
+      </h2>
+      ${renderWeekDays(monday, weekRecords)}
+    </div>
+</div>
+
+            `;
+          body.appendChild(row);
+        });
+    }
+
+    // ✅ FIXED PARAM
+    function getWeekEndDate(monday) {
+      const start = new Date(monday);
+      start.setDate(start.getDate() + 6);
+      return start.toISOString().split("T")[0];
+    }
+
+    // Render 7 day columns
+    function renderWeekDays(monday, weekRecords) {
+      const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const dayMap = {};
+
+      // ✅ FILTER Category === "single" AND map by r.day
+      weekRecords
+        .filter(r => r.Category && r.Category.toLowerCase() === "single" && r.Id.toLowerCase().trim() == ids.toLowerCase().trim())
+        .forEach(r => {
+          if (!r.day) return;
+
+          const index = days.findIndex(
+            d => d.toLowerCase() === r.day.toLowerCase()
+          );
+
+          if (index !== -1) {
+            dayMap[index] = r;
+          }
+        });
+
+      return days.map((d, i) => {
+        if (dayMap[i]) {
+          const r = dayMap[i];
+          return `
+           <div class="flex p-0 m-0 items-center justify-center font-bold gap-1 border border-gray-300">
+
+  <!-- Left numbers -->
+  <div class="text-[${r.Acolor}] text-center p-0 m-0 leading-tight">
+    ${r.Jodi.split('').map(v => `<p>${v}</p>`).join('')}
+  </div>
+
+  <!-- CENTER MARKS -->
+  <div class="flex items-center p-0 m-0 justify-center 
+              w-8 h-8  text-[${r.Bcolor}]
+              font-extrabold text-lg">
+    ${r.Marks}
+  </div>
+
+  <!-- Right numbers -->
+  <div class="text-center text-[${r.Ccolor}] p-0 m-0 leading-tight">
+    ${r.Pennel.split('').map(v => `<p>${v}</p>`).join('')}
+  </div>
+
+</div>
+`;
+        } else {
+          return `
+            <div class="flex items-center justify-center border border-gray-300 text-lg text-gray-400">
+                -
+            </div>`;
+        }
+      }).join('');
+    }
+
+    // Initial fetch
+    fetchRecords();
+  </script>
+
+</body>
+
+</html>

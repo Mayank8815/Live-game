@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- TITLE (Most Important Ranking Factor) -->
+  <title>Leela Bazar – Fast Satta Matka Results, Charts & Live Updates</title>
+  <!-- META DESCRIPTION (ONLY ONE) -->
+  <meta name="description"
+    content="Leela Bazar provides fast and accurate Satta Matka results, charts, lucky numbers and market updates. View Matka results in Hindi and English for informational purposes. No use any Payment And Gambling Structer. " />
+  <!-- ROBOTS -->
+  <meta name="robots" content="index, follow" />
+  <!-- CANONICAL -->
+  <link rel="canonical" href="https://leelabazar.in/" />
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" sizes="192x192" href="Logo.jpg" />
+  <link rel="apple-touch-icon" href="Logo.jpg" />
+  <!-- THEME COLOR -->
+  <meta name="theme-color" content="#FED7AA" />
+  <!-- OPEN GRAPH (SOCIAL PREVIEW) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Leela Bazar – Satta Matka Results & Charts" />
+  <meta property="og:description"
+    content="Check fast Satta Matka results, charts and live updates at Leela Bazar. Informational Matka data only." />
+  <meta property="og:url" content="https://leelabazar.in/" />
+  <meta property="og:image" content="https://leelabazar.in/Logo.jpg" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Leela Bazar – Satta Matka Results" />
+  <meta name="twitter:description"
+    content="Fast and accurate Satta Matka results, charts and updates. Hindi & English support." />
+  <meta name="twitter:image" content="https://leelabazar.in/Logo.jpg" />
+  <!-- LANGUAGE -->
+  <meta http-equiv="content-language" content="en-IN" />
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="Leela Bazar" />
+  <!-- FONTS & CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- STRUCTURED DATA (ONLY SAFE SCHEMA) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Leela Bazar",
+    "url": "https://leelabazar.in",
+    "description": "Leela Bazar provides informational Satta Matka results, charts and updates.",
+    "inLanguage": ["en", "hi"]
+  }
+  </script>
+
+</head>
+<style>
+  * {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+  }
+</style>
+
+<body class="bg-gray-100">
+  <!-- Refesh Button-->
+  <button title="refresh" id="refreshBtn" class="fixed bottom-4 z-50 right-6 bg-blue-900 mb-4 text-blue-700 px-4 py-3 rounded-full shadow-lg 
+         hover:bg-blue-900 transition transform  ">
+    <i id="refreshIcon" class="fas fa-sync-alt text-white text-2xl"></i>
+  </button>
+
+  <!-- HEADER -->
+  <header class="bg-orange-200 z-40 left-0 w-full shadow-md rounded-b-3xl">
+    <div class="p-4">
+      <div class="flex justify-between items-center">
+        <!-- LEFT PROFILE BUTTON -->
+        <div onclick="window.location.href='index.html'" id="openSidebar"
+          class="flex items-center gap-3 cursor-pointer">
+          <img title="leelabazar" src="Logo.jpg" class="w-11 h-11 rounded-full shadow-md" />
+          <p class="font-extrabold text-black text-3xl">Leela Bazar</p>
+        </div>
+        <div class="flex items-center gap-5 text-gray-900 text-2xl">
+          <i id="installBtn" class="fa-solid fa-mobile hover:text-blue-600 transition"></i>
+        </div>
+        <div id="iosTip" style="display:none">
+          <i class="fa-solid fa-mobile hover:text-blue-600 transition"></i>
+        </div>
+      </div>
+      <!-- Search Bar -->
+      <div class="mt-4 hidden">
+        <div class="bg-orange-100 rounded-2xl flex items-center px-4 py-3 shadow-inner">
+          <i class="fa-solid fa-search text-gray-500 mr-3"></i>
+          <input type="text" placeholder="Search Your Data ..."
+            class="w-full bg-transparent outline-none text-gray-700 placeholder-gray-500" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="md:flex ">
+
+    <!-- NOTICE -->
+    <div
+      class="bg-orange-300  mt-2 mx-2 p-3 font-normal text-justify md:w-96 text-center rounded-lg text-[13px] md:text-[16px] leading-5 border border-orange-400 ">
+      Leela Bazar Service is free.
+      We provide fast satta Matka results for all markets.
+      Check your daily lucky numbers and live updates here.
+    </div>
+
+    <div class="mx-2 mt-1 bg-white p-5 rounded-2xl md:w-full shadow-lg border border-gray-200">
+      <div class="flex items-center justify-between">
+
+    <div class="text-left">
+  <b class="text-base font-semibold text-gray-900">Golden Ank</b>
+  <p id="dataGolden" class="text-1xl font-extrabold text-pink-600 animate-pulse">
+    Loading...
+  </p>
+</div>
+
+<div class="text-right">
+  <b class="text-base font-semibold text-gray-900">Final Ank</b>
+  <p id="dataFinal" class="text-1xl font-extrabold text-pink-600 animate-pulse">
+    Loading...
+  </p>
+</div>
+
+      </div>
+    </div>
+
+    <!-- WARNING BOX -->
+    <div
+      class="bg-orange-700 text-white font-normal px-3 py-2 mx-2 mt-2 md:w-96 text-justify text-center rounded-lg text-[13px]  md:text-[16px] leading-5  ">
+      कल्याण मटका, मटका चार्ट, बॉम्बे मटका, सट्टा किंग & लाइव अपडेट यहाँ उपलब्ध।
+      फास्ट रिजल्ट देखने के लिए हमारा पेज रोज़ चेक करें।
+    </div>
+
+  </section>
+  <!-- LIVE RESULT HEADER -->
+  <section
+    class="bg-blue-900 text-white py-3 mx-2 rounded-2xl mt-2 text-lg font-bold shadow flex items-center justify-center gap-3">
+    <span class="relative flex h-4 w-4">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-100 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-4 w-4 bg-green-500"></span>
+    </span>
+    <span>LIVE RESULT</span>
+  </section>
+
+  <!-- FASTEST UPDATE TEXT -->
+  <div class="justify-center flex">
+    <b class="mt-1 text-gray-800 text-lg font-extrabold">सबसे तेज़ लाइव रिजल्ट यहीं मिलेगा</b>
+  </div>
+
+  <!-- MENU ICONS --> <span id="Category"></span>
+  <section class="mt-2 grid grid-cols-2 gap-5 text-center w-full hidden">
+
+    <!-- SINGLE -->
+    <div id="alpha" class="flex flex-col items-center cursor-pointer w-full">
+      <div id="alphachild"
+        class="w-full h-12 bg-[#f1f1f1ff] rounded-2xl shadow-md flex items-center justify-center text-gray-700 text-2xl">
+        <i class="fa-solid fa-dollar-sign"></i>
+      </div>
+      <p id="a" class="mt-2 text-gray-800 text-sm font-semibold">Single</p>
+    </div>
+
+    <!-- DOUBLE -->
+    <div id="beeta" class="flex flex-col items-center cursor-pointer w-full">
+      <div id="beetachild"
+        class="w-full h-12 bg-[#f1f1f1ff] rounded-2xl shadow-md flex items-center justify-center text-gray-700 text-2xl">
+        <i class="fa-solid fa-dollar-sign"></i> <i class="fa-solid fa-dollar-sign"></i>
+      </div>
+      <p id="b" class="mt-2 text-gray-800 text-sm font-semibold">Double</p>
+    </div>
+  </section>
+  <!-- DYNAMIC CONTENT AREA -->
+  <main id="dataSingle" class="mb-3"><!-- Loader Container -->
+    <!-- PRE LOADER -->
+    <div id="gameList"></div>
+  </main>
+
+  <section class=" justify-center mx-1">
+
+    <!-- NOTICE -->
+    <div class="bg-orange-300 rounded-2xl text-red-700 text-center text-sm font-bold py-2 border-b border-orange-400">
+      ★ NOTICE ★
+      <p class="text-black font-normal text-[12px] leading-4 mt-1 p-1">
+        यहां दिखाया गया रिजल्ट केवल मनोरंजन के लिए है।
+        किसी भी प्रकार के नुकसान के लिए आप स्वयं जिम्मेदार होंगे।
+      </p>
+    </div>
+
+    <!-- TITLE BAR -->
+    <div class="bg-pink-600 rounded-2xl  text-white text-center py-2 px-1 text-sm font-bold mt-1">
+      WORLD & INDIA MOST FASTEST SATTA RESULT SERVICE
+    </div>
+
+    <div
+      class="bg-orange-300 mt-2 mx-0 p-2 font-normal text-justify text-center rounded-lg text-[13px] md:text-[16px] leading-5 border border-orange-400 ">
+      Leela Bazar in, Leela Bazar satta, Leela Bazar Leela Bazar, indian satta matka, kalyan matkà result today,
+      matka Leelabazar, matka result live, matka satta result today, leelabazarsatamatka in, Leela Bazar com, Leela
+      Bazar net, satta leela bazar, satta matka king,
+      sattamatkà, sattamatkà result, sattamatta in, sattmatka sattmatka, star matka, tara matka, tara satta matka,
+      world matka, indian matka, matka live, kalyan guessing, satta fix, kalyan final ank, Leela Bazar matka, Leela
+      Bazar com, sata mata com, सट्टा मटका, sattamatkà 143, golden matka, satta matta matka 143, satta fast, kalyan
+      open, satta 143, Leela Bazar 143 guessing, Leela Bazar satta, golden satta matka, satta bajar
+    </div>
+
+    <div
+      class="bg-orange-700 mt-2 mx-0 p-2 text-white font-normal text-justify  text-center rounded-lg text-[13px] md:text-[16px] leading-5 border border-orange-400 ">
+      <p class="text-white font-extrabold items-center  text-center mb-2"> ⚠ डिस्क्लेमर ( Disclaimer )</p>
+
+      यह एक नॉन-कमर्शियल (गैर-व्यावसायिक) वेबसाइट है। यहाँ उपलब्ध सभी जानकारी इंटरनेट, न्यूमरोलॉजी और ज्योतिष के आधार
+      पर केवल जानकारी (Information Purpose) के लिए प्रदर्शित की जाती है।
+      हम सट्टा मटका / जुआ / बेटिंग / गैम्बलिंग के किसी भी अवैध कार्य से सीधा या अप्रत्यक्ष रूप से जुड़े नहीं हैं और न
+      ही किसी प्रकार का सट्टा मटका संचालन करते हैं।
+
+      यदि आपके देश या राज्य में सट्टा मटका अवैध है, तो कृपया अपने जोखिम और समझ के अनुसार ही इस वेबसाइट का उपयोग करें।
+      यदि कोई व्यक्ति आपसे पैसे की मांग करे या निवेश करने को कहे, तो निर्णय अपनी समझ और जिम्मेदारी पर ही लें।
+      किसी भी प्रकार के आर्थिक नुकसान, धोखाधड़ी या विवाद के लिए हम जिम्मेदार नहीं होंगे।
+
+      हम सभी देशों और क्षेत्रों के नियम एवं कानूनों का सम्मान करते हैं।
+      यदि आप हमारी शर्तों से सहमत नहीं हैं, तो कृपया तुरंत वेबसाइट छोड़ दें।
+      <p class="text-white font-extrabold  text-right ">
+        Thank You ( धन्यवाद । )</p>
+      <p class="text-white font-extrabold  text-right mb-2">
+        Leela Bazar</p>
+    </div>
+
+    <div class="text-base flex justify-between font-bold mb-8 mx-2 pointer">
+      <p>Terms & Conditions</p>
+      <p class="">
+        Service
+      </p>
+    </div>
+  </section>
+  <footer class="p-4 text-center text-sm text-gray-600">
+    Leela Bazar © 2025 | Fastest Satta Matka Results
+  </footer>
+
+</body>
+<script src="App.js"></script>
+<script src="Blocked.js"></script>
+<script>
+  let deferredPrompt;
+  const installBtn = document.getElementById("installBtn");
+  const iosTip = document.getElementById("iosTip");
+
+  /* ===============================
+     DEVICE / BROWSER DETECT
+  ================================ */
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isStandalone =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true;
+
+  /* ===============================
+     IF ALREADY INSTALLED → HIDE
+  ================================ */
+  if (isStandalone) {
+    installBtn.style.display = "none";
+    iosTip.style.display = "none";
+  }
+
+  /* ===============================
+     ANDROID / DESKTOP INSTALL
+  ================================ */
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+
+    if (!isStandalone) {
+      installBtn.style.display = "block";
+    }
+  });
+
+  /* ===============================
+     INSTALL CLICK
+  ================================ */
+  installBtn.addEventListener("click", async () => {
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+    const choice = await deferredPrompt.userChoice;
+
+    if (choice.outcome === "accepted") {
+      installBtn.style.display = "none";
+    }
+
+    deferredPrompt = null;
+  });
+
+  /* ===============================
+     IOS SAFARI (NO INSTALL API)
+  ================================ */
+  if (isIOS && !isStandalone) {
+    iosTip.style.display = "block";
+  }
+
+  /* ===============================
+     AFTER INSTALL EVENT
+  ================================ */
+  window.addEventListener("appinstalled", () => {
+    installBtn.style.display = "none";
+    iosTip.style.display = "none";
+  });
+</script>
+
+</html>
