@@ -1,73 +1,44 @@
-<!doctype html>
-<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login - Leela Bazar</title>
 
-  <!-- TITLE (Bilingual for maximum reach) -->
-  <title>लीला बाज़ार (Leela Bazar) – Fast Satta Matka Results & Live Charts</title>
+    <!-- SEO -->
+    <meta name="description" content="Leela Bazar – Play Smart & Track Your Game Stats Easily." />
+    <meta name="keywords" content="Leela Bazar, games, tracking, stats, online game" />
+    <meta name="author" content="Leela Bazar Team" />
 
-  <!-- META DESCRIPTION (Hindi first, then English) -->
-  <meta name="description" content="लीला बाज़ार सट्टा मटका का सबसे तेज़ रिजल्ट, लाइव अपडेट और चार्ट (Fastest Leela Bazar Satta Matka results). Get daily lucky numbers for informational purposes only. No gambling structure." />
+    <!-- OpenGraph (Social Media Preview) -->
+    <meta property="og:title" content="Leela Bazar" />
+    <meta property="og:description" content="Play Smart. Track Smarter. Leela Bazar PWA." />
+    <meta property="og:image" content="https://leelabazar.com/Logo.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://leelabazar.com/" />
 
-  <!-- ROBOTS (Advanced directives for better indexing) -->
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <!-- Favicon & PWA -->
+    <link rel="icon" type="image/png" sizes="192x192" href="https://leelabazar.com/Logo.jpg" />
+    <link rel="apple-touch-icon" href="https://leelabazar.com/Logo.jpg" />
+    <link rel="manifest" href="https://leelabazar.com/manifest.json" />
 
-  <!-- CANONICAL (See note below regarding .com and .in) -->
-  <link rel="canonical" href="https://leelabazar.in/" />
+    <meta name="theme-color" content="#FED7AA" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Leela Bazar" />
 
-  <!-- FAVICON -->
-  <link rel="icon" type="image/png" sizes="192x192" href="/Logo.jpg" />
-  <link rel="apple-touch-icon" href="/Logo.jpg" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- THEME COLOR -->
-  <meta name="theme-color" content="#FED7AA" />
+    <!-- Blocked Script -->
+    <script src="Blocked.js"></script>
 
-  <!-- OPEN GRAPH (SOCIAL PREVIEW) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Leela Bazar" />
-  <meta property="og:title" content="लीला बाज़ार (Leela Bazar) – Live Satta Matka Results" />
-  <meta property="og:description" content="लीला बाज़ार सट्टा मटका रिजल्ट। Check the fastest Leela Bazar Satta Matka results, charts, and live updates. Informational data only." />
-  <meta property="og:url" content="https://leelabazar.in/" />
-  <meta property="og:image" content="https://leelabazar.in/Logo.jpg" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
 
-  <!-- TWITTER CARD -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Leela Bazar – Live Satta Matka Results" />
-  <meta name="twitter:description" content="Fast and accurate Satta Matka results, charts and updates in Hindi and English." />
-  <meta name="twitter:image" content="https://leelabazar.in/Logo.jpg" />
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
-  <!-- LANGUAGE (Declare both Hindi and English) -->
-  <meta http-equiv="content-language" content="hi-IN, en-IN" />
-
-  <!-- PWA (Updated to modern standards) -->
-  <link rel="manifest" href="/manifest.json" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Leela Bazar" />
-
-  <!-- FONTS, ICONS & CSS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- STRUCTURED DATA (Bilingual Schema) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Leela Bazar",
-    "alternateName": "लीला बाज़ार",
-    "url": "https://leelabazar.in/",
-    "description": "लीला बाज़ार सट्टा मटका रिजल्ट। Leela Bazar provides informational Satta Matka results, charts and updates.",
-    "inLanguage": ["hi", "en"]
-  }
-  </script>
+    <!-- Firebase -->
+    <script type="module" src="firebase.js"></script>
 </head>
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
-</html>
