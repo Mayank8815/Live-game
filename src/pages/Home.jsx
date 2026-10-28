@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { useData } from "../components/DataContext"; // Adjust path if necessary
 import { useNavigate } from "react-router-dom";
-
 // STRONGER TIME FORMATTER TO HANDLE ISO STRINGS AND WEIRD DATA
 const formatTimeAMPM = (timeVal) => {
   if (timeVal == null || timeVal === "") return "NO"; // Fallback
