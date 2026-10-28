@@ -28,7 +28,6 @@ export default function Details() {
   }, [marketName]);
 
   // 2. DATA PROCESSING: Filter, Sort, and Group by Week
-  // 2. DATA PROCESSING: Filter, Sort, and Group by Week
   const weeklyData = useMemo(() => {
     if (!data || data.length === 0) return {};
 
@@ -43,7 +42,6 @@ export default function Details() {
       .sort((a, b) => new Date(a.Date) - new Date(b.Date));
 
     const weeks = {};
-    // ... rest of the code stays exactly the same
 
     filtered.forEach((r) => {
       if (!r.Date || !r.Day) return;
@@ -202,27 +200,32 @@ export default function Details() {
                               >
                                 {/* Left / Jodi (Stacked vertically) */}
                                 <div className="font-extrabold font-black text-[11px] leading-[11px] flex flex-col text-center">
-                                  {r.Jodi
-                                    ? r.Jodi.split("").map((char, i) => (
-                                        <span key={i}>{char}</span>
-                                      ))
+                                  {r.Jodi != null && r.Jodi !== ""
+                                    ? String(r.Jodi)
+                                        .split("")
+                                        .map((char, i) => (
+                                          <span key={i}>{char}</span>
+                                        ))
                                     : ""}
                                 </div>
 
                                 {/* Middle / Marks (Large Text) */}
+                                {/* Changed from {r.Marks || ""} to safely render "0" */}
                                 <div
                                   className="text-[18px] font-black min-w-[19px] text-center"
                                   style={{ color: r.Bcolor || "#000" }}
                                 >
-                                  {r.Marks || ""}
+                                  {r.Marks != null && r.Marks !== "" ? String(r.Marks) : ""}
                                 </div>
 
                                 {/* Right / Pennel (Stacked vertically) */}
                                 <div className="font-extrabold font-black text-[11px] leading-[11px] flex flex-col text-center">
-                                  {r.Pennel
-                                    ? r.Pennel.split("").map((char, i) => (
-                                        <span key={i}>{char}</span>
-                                      ))
+                                  {r.Pennel != null && r.Pennel !== ""
+                                    ? String(r.Pennel)
+                                        .split("")
+                                        .map((char, i) => (
+                                          <span key={i}>{char}</span>
+                                        ))
                                     : ""}
                                 </div>
                               </div>
