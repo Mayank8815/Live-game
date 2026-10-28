@@ -1,10 +1,14 @@
 import React, { useState, useMemo } from "react";
 import { useData } from "../components/DataContext"; // Adjust path if necessary
 import { useNavigate } from "react-router-dom";
-import Splash from "./Splash";
 
-const formatTimeAMPM = (timeStr) => {
-  if (!timeStr) return "NO"; // Fallback
+// STRONGER TIME FORMATTER TO HANDLE ISO STRINGS AND WEIRD DATA
+const formatTimeAMPM = (timeVal) => {
+  if (timeVal == null || timeVal === "") return "NO"; // Fallback
+  let timeStr = String(timeVal).trim();
+  if (timeStr.includes("T")) {
+    timeStr = timeStr.split("T")[1].substring(0, 5);
+  }
 
   if (
     timeStr.toLowerCase().includes("am") ||
@@ -13,16 +17,18 @@ const formatTimeAMPM = (timeStr) => {
     return timeStr;
   }
 
-  const [hourString, minuteString] = timeStr.split(":");
-  if (hourString && minuteString) {
-    let hours = parseInt(hourString, 10);
-    const minutes = minuteString.substring(0, 2);
-    const ampm = hours >= 12 ? "PM" : "AM";
+  if (timeStr.includes(":")) {
+    const [hourString, minuteString] = timeStr.split(":");
+    if (hourString != null && minuteString != null) {
+      let hours = parseInt(hourString, 10);
+      const minutes = minuteString.substring(0, 2);
+      const ampm = hours >= 12 ? "PM" : "AM";
 
-    hours = hours % 12;
-    hours = hours ? hours : 12;
+      hours = hours % 12;
+      hours = hours ? hours : 12;
 
-    return `${hours}:${minutes} ${ampm}`;
+      return `${hours}:${minutes} ${ampm}`;
+    }
   }
 
   return timeStr;
@@ -152,6 +158,15 @@ export default function Home() {
     let fAnk = "***";
     let filteredList = [];
 
+    // Helper to format Golden/Final string safely allowing '0' values
+    const formatSafeAnk = (row) => {
+      if (!row) return "***";
+      const j = row.Jodi != null && row.Jodi !== "" ? row.Jodi : "";
+      const m = row.Marks != null && row.Marks !== "" ? row.Marks : "";
+      const p = row.Pennel != null && row.Pennel !== "" ? row.Pennel : "";
+      return `${j} - ${m} - ${p}`;
+    };
+
     if (data && data.length > 0) {
       const goldenRow = data.find(
         (item) => item.Name && item.Name.toLowerCase() === "golden",
@@ -160,12 +175,8 @@ export default function Home() {
         (item) => item.Name && item.Name.toLowerCase() === "final",
       );
 
-      gAnk = goldenRow
-        ? goldenRow.Jodi +" - "+ goldenRow.Marks +" - "+ goldenRow.Pennel || "***"
-        : data[0].GoldenAnk || "***";
-      fAnk = finalRow
-        ? finalRow.Jodi +" - "+ finalRow.Marks +" - "+ finalRow.Pennel || "***"
-        : data[0].FinalAnk || "***";
+      gAnk = goldenRow ? formatSafeAnk(goldenRow) : data[0]?.GoldenAnk || "***";
+      fAnk = finalRow ? formatSafeAnk(finalRow) : data[0]?.FinalAnk || "***";
 
       filteredList = data.reverse().filter((item, index, self) => {
         if (!item.Name) return false;
@@ -177,7 +188,6 @@ export default function Home() {
 
     return { goldenAnk: gAnk, finalAnk: fAnk, uniqueData: filteredList };
   }, [data]);
-
 
   return (
     <div
@@ -348,14 +358,54 @@ export default function Home() {
         </b>
       </div>
 
-      {/* DYNAMIC CONTENT AREA */}
+    {/* DYNAMIC CONTENT AREA */}
       <main className="mb-3 mt-4 mx-2">
         <div className="flex flex-wrap gap-4 w-full mx-auto">
           {loading && uniqueData.length === 0 ? (
-            //  <p className="text-center z-[100] mx-auto text-pink-600 text-xl font-extrabold animate-pulse my-10">
-            //   {t.dataLoading} </p>
-            <Splash></Splash>
+            [
+              "LEELA BAZAR",
+              "SYNDICATE NIGHT",
+              "MORNING SYNDICATE",
+              "KALYAN",
+              "SHAKTIMAAN",
+              "RAJDHANI NIGHT"
+            ].map((dummyName, index) => (
+              <div
+                key={`skeleton-${index}`}
+                className={`${theme.marketCard} rounded-2xl shadow-md p-2 w-full md:w-[32.5%] text-center border transition-colors duration-300 animate-pulse`}
+              >
+                <div>
+                  {/* Keep the actual market name visible while loading */}
+                  <h3 className={`text-2xl font-extrabold uppercase text-gray-700`}>
+                    {getMarketName(dummyName, language)}
+                  </h3>
+
+                  {/* Pulsing Number Blocks */}
+                  <div className="text-2xl font-extrabold my-2 tracking-widest flex justify-center gap-3">
+                    <div className="bg-gray-300/50 w-8 h-8 rounded"></div>
+                    <span className="text-gray-300/50">-</span>
+                    <div className="bg-gray-300/50 w-12 h-8 rounded"></div>
+                    <span className="text-gray-300/50">-</span>
+                    <div className="bg-gray-300/50 w-10 h-8 rounded"></div>
+                  </div>
+
+                  {/* Pulsing Timing Blocks */}
+                  <div className={`flex justify-center gap-4 text-sm font-semibold mt-1`}>
+                    <div className="bg-gray-300/50 w-16 h-4 rounded"></div>
+                    <p className="text-orange-200">|</p>
+                    <div className="bg-gray-300/50 w-16 h-4 rounded"></div>
+                  </div>
+                </div>
+
+                {/* Pulsing Buttons */}
+                <div className="mt-3 flex gap-3">
+                  <div className="flex-1 bg-green-500/40 h-8 rounded-xl shadow-sm"></div>
+                  <div className="flex-1 bg-blue-500/40 h-8 rounded-xl shadow-sm"></div>
+                </div>
+              </div>
+            ))
           ) : (
+            /* --- ACTUAL DATA RENDER --- */
             uniqueData.reverse().map((item, index) => (
               <div
                 key={item.Id || index}
@@ -369,15 +419,21 @@ export default function Home() {
                   </h3>
 
                   <div className="text-2xl font-extrabold my-2 tracking-widest flex justify-center gap-3">
+                    {/* SAFELY RENDER '0' VALUES IN JODI */}
                     <span style={{ color: item.Bcolor || "#db2777" }}>
-                      {item.Jodi || "**"} </span>
-                    <span className={theme.textSecondary}>-</span>
-                    <span style={{ color: item.Ccolor || "#db2777" }}>
-                      {item.Marks || "***"}
+                      {item.Jodi != null && item.Jodi !== "" ? item.Jodi : "**"}
                     </span>
                     <span className={theme.textSecondary}>-</span>
+                    
+                    {/* SAFELY RENDER '0' VALUES IN MARKS */}
+                    <span style={{ color: item.Ccolor || "#db2777" }}>
+                      {item.Marks != null && item.Marks !== "" ? item.Marks : "***"}
+                    </span>
+                    <span className={theme.textSecondary}>-</span>
+                    
+                    {/* SAFELY RENDER '0' VALUES IN PENNEL */}
                     <span style={{ color: item.Acolor || "#db2777" }}>
-                      {item.Pennel || "***"}
+                      {item.Pennel != null && item.Pennel !== "" ? item.Pennel : "***"}
                     </span>
                   </div>
 
