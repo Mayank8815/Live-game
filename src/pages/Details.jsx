@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useData } from "../components/DataContext"; // Adjust path if needed
-
 export default function Details() {
   const { marketName } = useParams(); // Gets the name from the previous page
   const navigate = useNavigate();
